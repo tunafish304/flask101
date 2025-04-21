@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block head %}
+<title>Edit a Comment</title>
+{% endblock %} {% block body %}
+<hr />
+<h2>Edit the comment:</h2>
+<form action="/comments/edit/{{comment.id}}" method="POST">
+  <div>
+    <textarea id="comment" name="comment">{{comment.comment.strip()}}</textarea>
+  </div>
+  <br />
+  <br />
+  <input type="submit" value="Save" />
+</form>
+<hr />
+{% endblock %}

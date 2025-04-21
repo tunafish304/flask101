@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block head %}
+<title>Comments</title>
+{% endblock %} {% block body %}
+<h1>All Comments</h1>
+<hr />
+
+<form action="/comments" method="POST">
+  <div>
+    <h4>Add a new comment:</h2>
+    <textarea id="comment" name="comment" placeholder="Enter your comment"></textarea>
+  </div>
+  <br />
+  <br />
+  <input type="submit" value="Post" />
+</form>
+<hr />
+<table border="1" style="border-collapse:collapse;"">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Comment</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for comment in comments %}
+    <tr>
+      <td>{{ comment.id }}</td>
+      <td>{{ comment.comment }}</td>
+      <td>
+        <a href="/comments/delete/{{comment.id}}">Delete</a> |
+        <a href="/comments/edit/{{comment.id}}">Edit</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
